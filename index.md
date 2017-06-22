@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -42,8 +42,8 @@ Both of these can be specified in the application's manifest file.  For example:
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-The current java_buildpack version is v3.6 which contains default Tomcat version 8.30.0 and default Java version 1.8.0_71.
-For more information please see [java-buildpack releases](https://github.com/cloudfoundry/java-buildpack/releases).
+The current java_buildpack version is v3.13 which contains default Tomcat version 8.0.41 and default Java version 1.8.0_121.
+For more information please see [java-buildpack releases](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13).
 
 ## HTTPS redirect
 {: #https_redirect}
