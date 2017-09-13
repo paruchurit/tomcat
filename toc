@@ -10,11 +10,17 @@ Tomcat
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
-    [Using the starter applications](../../cfapps/starter_app_usage.html)
-    [Working with a proxy](../../manageapps/workingWithProxy.html)
-    [Using community buildpacks](../../cfapps/byob.html)
+    [Work with a proxy](../../manageapps/workingWithProxy.html)
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    Starter applications and community buildpacks
+        [Use the starter applications](../../cfapps/starter_app_usage.html)
+        [Use community buildpacks](../../cfapps/byob.html)
     {: .navgroup-end}
 
     {: .navgroup id="help"}
+    [Runtime versions](index.html/#runtime_versions)
     [Buildpack support statement](../../manageapps/buildpackSupport.html)
     {: .navgroup-end}
