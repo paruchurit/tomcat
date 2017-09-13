@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-06-09"
+lastupdated: "2017-09-06"
 
 ---
 
@@ -15,14 +15,14 @@ lastupdated: "2017-06-09"
 {:download: .download}
 {:app_name: data-hd-keyref="app_name"}
 
-# Getting started with Tomcat on Bluemix
+# Getting started tutorial
 {: #getting_started}
 
 * {: download} Congratulations, you deployed a Hello World sample application on {{site.data.keyword.Bluemix}}!  To get started, follow this step-by-step guide. Or, <a class="xref" href="http://bluemix.net" target="_blank" title="(Download sample code)"><img class="hidden" src="../../images/btn_starter-code.svg" alt="Download application code" />download the sample code</a> and explore on your own.
 
-By following this guide, you'll set up a development environment, deploy an app locally and on {{site.data.keyword.Bluemix}}, and integrate a {{site.data.keyword.Bluemix}} database service in your app.
+By following the Tomcat getting started tutorial, you'll set up a development environment, deploy an app locally and on {{site.data.keyword.Bluemix}}, and integrate a {{site.data.keyword.Bluemix}} database service in your app.
 
-## Prerequisites
+## Before you begin
 {: #prereqs}
 
 You'll need the following:
@@ -34,7 +34,7 @@ You'll need the following:
 * [Apache Tomcat version 8.0.41 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tomcat.apache.org/download-80.cgi#8.0.41 ){: new_window}
 
 
-## 1. Clone the sample app
+## Step 1: Clone the sample app
 {: #clone}
 
 Now you're ready to start working with the sample Tomcat app. Clone the repository and change to the directory to where the sample app is located.
@@ -50,7 +50,7 @@ cd get-started-tomcat
 
 Peruse the files in the *get-started-tomcat* directory to familiarize yourself with the contents.
 
-## 2. Run the app locally
+## Step 2: Run the app locally
 {: #run_locally}
 
 You must install the dependencies and build a .war file as defined in the pom.xml file to run the app.
@@ -76,7 +76,7 @@ View your app at: http://localhost:8080/GetStartedTomcat/
 Use `shutdown.bat|.sh` to stop your app.  Note you may need to give the commands execute permission.
 {: tip}
 
-## 3. Prepare the app for {{site.data.keyword.Bluemix_notm}} deployment
+## Step 3: Prepare the app for {{site.data.keyword.Bluemix_notm}} deployment
 {: #prepare}
 
 To deploy to {{site.data.keyword.Bluemix_notm}}, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the `get-started-tomcat` directory.
@@ -97,7 +97,7 @@ Open the manifest.yml file, and change the `name` from `GetStartedTomcat` to you
 In this manifest.yml file, **random-route: true** generates a random route for your app to prevent your route from colliding with others.  If you choose to, you can replace **random-route: true** with **host: myChosenHostName**, supplying a host name of your choice. [Learn more...](/docs/manageapps/depapps.html#appmanifest)
 {: tip}
 
-## 4. Deploy the app
+## Step 4: Deploy the app
 {: #deploy}
 
 You can use the Cloud Foundry CLI to deploy apps.
@@ -125,6 +125,8 @@ cf login
 ```
 {: pre}
 
+If you cannot log in using the `cf login` or `bx login` commands because you have a federated user ID, use either the `cf login --sso` or `bx login --sso` commands to log in with your single sign on ID. See [Logging in with a federated ID](https://console.bluemix.net/docs/cli/login_federated_id.html#federated_id) to learn more.
+
 From within the *get-started-tomcat* directory push your app to {{site.data.keyword.Bluemix_notm}}
 ```
 cf push
@@ -140,7 +142,7 @@ cf apps
   {: pre}
   command to view your apps status and see the URL.
 
-## 6. Developing in Eclipse
+## Step 5: Develop in Eclipse
 {: #developing_in_eclipse}
 
 IBM® Eclipse Tools for {{site.data.keyword.Bluemix}} provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with {{site.data.keyword.Bluemix_notm}}.
@@ -174,7 +176,7 @@ Run your application on {{site.data.keyword.Bluemix_notm}}:
 
 Now you have run your code locally and on the cloud!
 
-## 7. Add a database
+## Step 6: Add a database
 {: #add_database}
 
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on Bluemix.
@@ -187,7 +189,7 @@ Next, we'll add a NoSQL database to this application and set up the application 
 Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code. [Learn more...](/docs/manageapps/depapps.html#app_env)
 {: tip}
 
-## 8. Use the database
+## Step 7: Use the database
 {: #use_database}
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in {{site.data.keyword.Bluemix_notm}}, the credentials will be read from the VCAP_SERVICES environment variable.
 
