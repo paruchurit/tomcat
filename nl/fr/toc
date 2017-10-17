@@ -10,11 +10,17 @@ Tomcat
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
-    [Utilisation des applications de démarrage](../../cfapps/starter_app_usage.html)
     [Utilisation d'un proxy](../../manageapps/workingWithProxy.html)
-    [Utilisation de packs de construction de communauté](../../cfapps/byob.html)
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    Applications de démarrage et packs de construction de communauté
+        [Utilisation des applications de démarrage](../../cfapps/starter_app_usage.html)
+        [Utilisation des packs de construction de communauté](../../cfapps/byob.html)
     {: .navgroup-end}
 
     {: .navgroup id="help"}
+    [Versions d'environnement d'exécution](index.html/#runtime_versions)
     [Déclaration de prise en charge pour les packs de construction](../../manageapps/buildpackSupport.html)
     {: .navgroup-end}

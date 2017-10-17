@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -41,13 +41,13 @@ Ces deux variables d'environnement peuvent être définies dans le fichier manif
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-La version java_buildpack actuelle, v3.6, contient la version 8.30.0 Tomcat par défaut et la version Java 1.8.0_71 par défaut.
-Pour plus d'informations, voir les informations sur les [éditions java-buildpack](https://github.com/cloudfoundry/java-buildpack/releases).
+La version java_buildpack actuelle, v3.13, contient la version Tomcat 8.0.41 par défaut et la version Java 1.8.0_121 par défaut.
+Pour plus d'informations, voir les informations sur les [éditions java-buildpack](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13).
 
 ## Redirection HTTPS
 {: #https_redirect}
 
-L'environnement d'exécution Tomcat peut être configuré pour faire confiance aux proxys internes Bluemix et autoriser la redirection du trafic HTTP vers HTTPS (SSL).
+L'environnement d'exécution Tomcat peut être configuré pour faire confiance aux proxy internes Bluemix et autoriser la redirection du trafic HTTP vers HTTPS (SSL).
 Pour ce faire, modifiez le fichier server.xml et définissez l'élément RemoteIpValve Valve avec les options internalProxies et protocolHeader.
 
 Le fichier [server.xml](https://github.com/cloudfoundry/java-buildpack/blob/master/resources/tomcat/conf/server.xml) de l'environnement d'exécution Tomcat inclus dans le pack de construction ne définit par défaut que l'option protocolHeader pour l'élément RemoteIpValve Valve.  Pour rediriger le trafic HTTP vers HTTPS dans Bluemix, configurez l'élément RemoteIpValve dans le fichier server.xml personnalisé comme suit :
@@ -57,7 +57,7 @@ Le fichier [server.xml](https://github.com/cloudfoundry/java-buildpack/blob/mast
 ```
 {: codeblock}
 
-Vous trouverez davantage d'options de configuration de RemoteIpValve dans la [documentation Tomcat![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://tomcat.apache.org/tomcat-8.0-doc/api/org/apache/catalina/valves/RemoteIpValve.html).
+Vous trouverez davantage d'options de configuration de RemoteIpValve dans la [documentation Tomcat![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tomcat.apache.org/tomcat-8.0-doc/api/org/apache/catalina/valves/RemoteIpValve.html).
 
 # rellinks
 {: #rellinks notoc}

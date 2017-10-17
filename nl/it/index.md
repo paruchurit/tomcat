@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -42,8 +42,8 @@ Possono essere entrambe specificate nel file manifest dell'applicazione.  Ad ese
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-La versione corrente del pacchetto di build è v3.6 che contiene Tomcat versione 8.30.0 e la versione Java predefinita 1.8.0_71.
-Per ulteriori informazioni, consulta per favore le [java-buildpack releases](https://github.com/cloudfoundry/java-buildpack/releases).
+La versione corrente del pacchetto di build è v3.13 che contiene Tomcat versione 8.0.41 e la versione Java predefinita 1.8.0_121.
+Per ulteriori informazioni, consulta per favore le [java-buildpack releases](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13).
 
 ## Reindirizzamento HTTPS
 {: #https_redirect}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-04-04"
+lastupdated: "2017-09-06"
 
 ---
 
@@ -15,14 +15,14 @@ lastupdated: "2017-04-04"
 {:download: .download}
 {:app_name: data-hd-keyref="app_name"}
 
-# Bluemix での Tomcat 入門
+# 入門チュートリアル
 {: #getting_started}
 
 * {: download} Hello World サンプル・アプリケーションが {{site.data.keyword.Bluemix}} に正常にデプロイされました。入門として、このステップバイステップのガイドに従って作業してください。または、<a class="xref" href="http://bluemix.net" target="_blank" title="(サンプル・コードのダウンロード)"><img class="hidden" src="../../images/btn_starter-code.svg" alt="アプリケーション・コードのダウンロード" />サンプル・コードをダウンロード</a>して、ご自身で探索してください。
 
-このガイドに従うことによって、開発環境をセットアップし、ローカルおよび {{site.data.keyword.Bluemix}} でアプリケーションをデプロイし、{{site.data.keyword.Bluemix}} データベース・サービスをアプリケーションに統合します。
+以下の Tomcat 入門チュートリアルに従って、開発環境のセットアップ、ローカルおよび {{site.data.keyword.Bluemix}} でのアプリケーションのデプロイ、および {{site.data.keyword.Bluemix}} データベース・サービスのアプリケーションへの統合を行います。
 
-## 前提条件
+## 始める前に
 {: #prereqs}
 
 以下が必要です。
@@ -34,7 +34,7 @@ lastupdated: "2017-04-04"
 * [Apache Tomcat バージョン 8.0.41 ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://tomcat.apache.org/download-80.cgi#8.0.41 ){: new_window}
 
 
-## 1. サンプル・アプリケーションの複製
+## ステップ 1: サンプル・アプリケーションを複製する
 {: #clone}
 
 サンプルの Tomcat アプリケーションの操作を開始する準備ができました。リポジトリーを複製して、サンプル・アプリケーションがあるディレクトリーに変更します。
@@ -50,7 +50,7 @@ cd get-started-tomcat
 
 *get-started-tomcat* ディレクトリー内のファイルを詳細に調べて、内容をよく理解します。
 
-## 2. アプリケーションのローカルでの実行
+## ステップ 2: アプリケーションをローカルで実行する
 {: #run_locally}
 
 アプリケーションをインストールするには、pom.xml ファイルで定義されているように依存関係をインストールして、.war ファイルをビルドする必要があります。
@@ -76,7 +76,7 @@ http://localhost:8080/GetStartedTomcat/ でアプリケーションを表示し�
 `shutdown.bat|.sh` を使用してアプリケーションを停止します。コマンドの実行許可の付与が必要になる可能性があることに注意してください。
 {: tip}
 
-## 3. {{site.data.keyword.Bluemix_notm}} のデプロイメントのためのアプリケーションの準備
+## ステップ 3: {{site.data.keyword.Bluemix_notm}} のデプロイメントのためにアプリケーションを準備する
 {: #prepare}
 
 {{site.data.keyword.Bluemix_notm}} にデプロイするには、manifest.yml ファイルをセットアップすると役に立つことがあります。manifest.yml には、アプリケーションに関する基本的な情報 (名前、各インスタンス用に割り振るメモリー量、経路など) が含まれます。`get-started-tomcat` ディレクトリーにサンプルの manifest.yml ファイルが用意されています。
@@ -89,7 +89,7 @@ manifest.yml ファイルを開き、`name` を `GetStartedTomcat` からご使�
   - name: GetStartedTomcat
     random-route: true
     memory: 256M
-    path: target/TomcatHelloWorldApp.war
+    path: target/GetStartedTomcat.war
     buildpack: java_buildpack
   ```
   {: codeblock}
@@ -97,7 +97,7 @@ manifest.yml ファイルを開き、`name` を `GetStartedTomcat` からご使�
 この manifest.yml ファイル内の **random-route: true** は、アプリケーション用にランダムな経路を生成して、経路が他と衝突するのを回避します。任意のホスト名を指定して、**random-route: true** を **host: myChosenHostName** に置き換えることも選択できます。[詳細はこちら...](/docs/manageapps/depapps.html#appmanifest)
 {: tip}
 
-## 4. アプリケーションのデプロイ
+## ステップ 4: アプリケーションをデプロイする
 {: #deploy}
 
 Cloud Foundry CLI を使用してアプリケーションをデプロイできます。
@@ -111,12 +111,12 @@ cf api <API-endpoint>
 
 コマンド内の *API-endpoint* は以下のリストにある API エンドポイントのいずれかで置き換えてください。
 
-|URL                             |地域          |
-|:-------------------------------|:---------------|
-| https://api.ng.bluemix.net     | 米国南部       |
-| https://api.eu-gb.bluemix.net  | 英国 |
-| https://api.au-syd.bluemix.net | シドニー         |
-
+|地域|API エンドポイント|
+|:---------------|:-------------------------------|
+| 米国南部|https://api.ng.bluemix.net|
+| 英国| https://api.eu-gb.bluemix.net|
+| シドニー| https://api.au-syd.bluemix.net|
+| フランクフルト     | https://api.eu-de.bluemix.net | 
 
 {{site.data.keyword.Bluemix_notm}} アカウントにログインします。
 
@@ -125,22 +125,24 @@ cf login
 ```
 {: pre}
 
+フェデレーテッド・ユーザー ID を使用しているために `cf login` または `bx login` のコマンドを使用してログインできない場合は、`cf login --sso` または `bx login --sso` のコマンドを使用し、シングル・サインオン ID を使ってログインしてください。詳しくは、[『フェデレーテッド ID を使用したログイン』](https://console.bluemix.net/docs/cli/login_federated_id.html#federated_id)を参照してください。
+
 *get-started-tomcat* ディレクトリー内から、アプリケーションを {{site.data.keyword.Bluemix_notm}} にプッシュします。
 ```
 cf push
 ```
 {: pre}
 
-これには約 2 分かかることがあります。デプロイメント・プロセスでエラーが発生した場合、`cf logs <Your-App-Name> --recent` コマンドを使用してトラブルシューティングできます。
+これには約 2 分かかることがあります。デプロイメント・プロセスでエラーが発生した場合、`cf logs <Your-App-Name> --recent` コマンドを使用してトラブルシューティングすることができます。
 
-デプロイメントが完了すると、アプリケーションが実行中であることを示すメッセージが表示されます。push コマンドの出力にリストされている URL でアプリケーションを表示します。また、
+デプロイメントが完了すると、アプリケーションが実行中であることを示すメッセージが表示されます。push コマンドの出力にリストされている URL でアプリケーションを表示します。また、以下のコマンドを実行することもできます。
   ```
 cf apps
   ```
   {: pre}
-  コマンドを発行して、アプリケーションの状況と URL を確認することもできます。
+  このコマンドにより、アプリケーションの状況と URL が表示されます。
 
-## 6. Eclipse での開発
+## ステップ 5: Eclipse で開発する
 {: #developing_in_eclipse}
 
 IBM® Eclipse Tools for {{site.data.keyword.Bluemix}} には、開発者の統合開発環境 (IDE) を {{site.data.keyword.Bluemix_notm}} と統合するのを支援するために、既存の Eclipse 環境にインストールできるプラグインが用意されています。
@@ -158,7 +160,7 @@ Tomcat サーバー定義を作成します。
 アプリケーションを Apache サーバーでローカルで実行します。
   - `GetStartedTomcat` サンプルを右クリックして、`「実行 (Run As)」`->`「サーバーで実行 (Run on Server)」`オプションを選択します。
   - ローカル・ホスト Tomcat サーバーを見つけて選択し、「完了」を押します。
-  - 数秒後に、http://localhost:8080/TomcatHelloWorldApp/ でアプリケーションが実行されます。
+  - 数秒後に、アプリケーションは http://localhost:8080/GetStartedTomcat/ で実行されます。
 
 {{site.data.keyword.Bluemix_notm}} サーバー定義を作成します。
   - `「サーバー (Servers)」`ビューで、右クリック ->`「新規 (New)」`->`「サーバー (Server)」`を選択します。
@@ -174,20 +176,20 @@ Tomcat サーバー定義を作成します。
 
 これで、コードをローカルおよびクラウド上で実行しました。
 
-## 7. データベースの追加
+## ステップ 6: データベースを追加する
 {: #add_database}
 
 次に、NoSQL データベースをこのアプリケーションに追加して、ローカルおよび Bluemix 上で実行できるようにアプリケーションをセットアップします。
 
 1. ご使用のブラウザーで {{site.data.keyword.Bluemix_notm}} にログインします。`「ダッシュボード」`を参照します。`「名前」`列でアプリケーション名をクリックして、そのアプリケーションを選択します。
 2. `「接続」`、`「新規に接続」`の順にクリックします。
-2. `「データおよび分析」`セクションで、`「Cloudant NoSQL DB」`を選択して、サービスを`作成`します。
+2. `「データおよび分析」`セクションで、`「Cloudant NoSQL DB」`を選択して、サービスを`「作成」`します。
 3. プロンプトが出されたら、`「再ステージ」`を選択します。{{site.data.keyword.Bluemix_notm}} はアプリケーションを再始動し、`VCAP_SERVICES` 環境変数を使用してデータベース資格情報をアプリケーションに提供します。この環境変数は、アプリケーションが {{site.data.keyword.Bluemix_notm}} で実行されている場合にのみアプリケーションで使用できます。
 
 環境変数を使用すると、デプロイメント設定をソース・コードと分離することができます。例えば、データベース・パスワードをハードコーディングする代わりに、環境変数にそれを保管して、ソース・コードではその環境変数を参照するようにできます。[詳細はこちら...](/docs/manageapps/depapps.html#app_env)
 {: tip}
 
-## 8. データベースの使用
+## ステップ 7: データベースを使用する
 {: #use_database}
 次に、このデータベースを指すようにローカル・コードを更新します。サービス用の資格情報をプロパティー・ファイルに保管します。このファイルは、アプリケーションがローカルで実行されている場合にのみ使用されます。{{site.data.keyword.Bluemix_notm}} で実行されているときには、資格情報は VCAP_SERVICES 環境変数から読み取られます。
 

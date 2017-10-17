@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-04-04"
+lastupdated: "2017-09-06"
 
 ---
 
@@ -15,14 +15,14 @@ lastupdated: "2017-04-04"
 {:download: .download}
 {:app_name: data-hd-keyref="app_name"}
 
-# Bluemix에서 Tomcat 시작하기
+# 시작하기 튜토리얼
 {: #getting_started}
 
 * {: download} 축하합니다. {{site.data.keyword.Bluemix}}에 Hello World 샘플 애플리케이션을 배치했습니다. 시작하려면 이 단계별 안내서를 따르십시오. 또는 <a class="xref" href="http://bluemix.net" target="_blank" title="(샘플 코드 다운로드)"><img class="hidden" src="../../images/btn_starter-code.svg" alt="애플리케이션 코드 다운로드" />샘플 코드를 다운로드</a>하고 직접 탐색하십시오.
 
-이 안내서를 통해 개발 환경을 설정하고, 앱을 로컬 및 {{site.data.keyword.Bluemix}}에 배치하고, 앱에 {{site.data.keyword.Bluemix}} 데이터베이스 서비스를 통합합니다.
+Tomcat 시작하기 튜토리얼에 따라 개발 환경을 설정하고, 앱을 로컬 및 {{site.data.keyword.Bluemix}}에 배치하고, 앱에 {{site.data.keyword.Bluemix}} 데이터베이스 서비스를 통합합니다.
 
-## 전제조건
+## 시작하기 전에
 {: #prereqs}
 
 다음이 필요합니다.
@@ -34,7 +34,7 @@ lastupdated: "2017-04-04"
 * [Apache Tomcat 버전 8.0.41 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://tomcat.apache.org/download-80.cgi#8.0.41 ){: new_window}
 
 
-## 1. 샘플 앱 복제
+## 1단계: 샘플 앱 복제
 {: #clone}
 
 이제 샘플 Tomcat 앱에 대한 작업을 시작할 준비가 되었습니다. 저장소를 복제하고 샘플 앱이 있는 디렉토리로 변경하십시오.
@@ -50,7 +50,7 @@ cd get-started-tomcat
 
 *get-started-tomcat* 디렉토리에서 파일을 확인하여 컨텐츠를 익히십시오.
 
-## 2. 로컬로 앱 실행
+## 2단계: 로컬로 앱 실행
 {: #run_locally}
 
 종속 항목을 설치하고 pom.xml 파일에 정의된 대로 .war 파일을 빌드하여 앱을 실행해야 합니다.
@@ -76,7 +76,7 @@ http://localhost:8080/GetStartedTomcat/에서 앱 보기
 `shutdown.bat|.sh`를 사용하여 앱을 중지하십시오. 명령 실행 권한을 제공해야 합니다.
 {: tip}
 
-## 3. {{site.data.keyword.Bluemix_notm}} 배치를 위해 앱 준비
+## 3단계: {{site.data.keyword.Bluemix_notm}} 배치를 위해 앱 준비
 {: #prepare}
 
 {{site.data.keyword.Bluemix_notm}}에 배치하는 경우 manifest.yml 파일을 설정하는 것이 도움이 될 수 있습니다. manifest.yml에는 앱에 대한 기본 정보(예: 이름, 각 인스턴스에 할당할 메모리 크기, 라우트)가 포함됩니다. `get-started-tomcat` 디렉토리에 샘플 manifest.yml 파일을 제공했습니다.
@@ -89,7 +89,7 @@ manifest.yml 파일을 열고 `name`을 `GetStartedTomcat`에서 앱 이름 <var
   - name: GetStartedTomcat
     random-route: true
     memory: 256M
-    path: target/TomcatHelloWorldApp.war
+    path: target/GetStartedTomcat.war
     buildpack: java_buildpack
   ```
   {: codeblock}
@@ -97,7 +97,7 @@ manifest.yml 파일을 열고 `name`을 `GetStartedTomcat`에서 앱 이름 <var
 이 manifest.yml 파일에서 **random-route: true**는 사용자 라우트가 다른 라우트와 충돌하지 않도록 앱을 위한 임의 라우트를 생성합니다. 원하는 경우, **random-route: true**를 **host: myChosenHostName**으로 바꾸고 사용하려는 호스트 이름을 제공할 수 있습니다. [자세히 보기...](/docs/manageapps/depapps.html#appmanifest)
 {: tip}
 
-## 4. 앱 배치
+## 4단계: 앱 배치
 {: #deploy}
 
 Cloud Foundry CLI를 사용하여 앱을 배치할 수 있습니다. 
@@ -111,12 +111,12 @@ cf api <API-endpoint>
 
 명령의 *API-endpoint*를 다음 목록의 API 엔드포인트로 바꾸십시오.
 
-|URL                             |지역          |
-|:-------------------------------|:---------------|
-| https://api.ng.bluemix.net     | 미국 남부       |
-| https://api.eu-gb.bluemix.net  | 영국 |
-| https://api.au-syd.bluemix.net | 시드니         |
-
+|지역|API 엔드포인트|
+|:---------------|:-------------------------------|
+| 미국 남부| https://api.ng.bluemix.net|
+| 영국| https://api.eu-gb.bluemix.net|
+| 시드니| https://api.au-syd.bluemix.net|
+| 프랑크푸르트| https://api.eu-de.bluemix.net | 
 
 {{site.data.keyword.Bluemix_notm}} 계정에 로그인하십시오.
 
@@ -124,6 +124,8 @@ cf api <API-endpoint>
 cf login
 ```
 {: pre}
+
+연합 사용자 ID가 있기 때문에 `cf login` 또는 `bx login` 명령을 사용하여 로그인할 수 없는 경우 `cf login --sso` 또는 `bx login --sso` 명령을 사용하여 싱글 사인온 ID로 로그인할 수 있습니다. 자세한 정보는 [연합 ID로 로그인](https://console.bluemix.net/docs/cli/login_federated_id.html#federated_id)을 참조하십시오.
 
 *get-started-tomcat* 디렉토리에서 {{site.data.keyword.Bluemix_notm}}에 앱 푸시
 ```
@@ -140,7 +142,7 @@ cf apps
   {: pre}
   명령을 실행하여 앱 상태를 보고 URL을 확인할 수 있습니다.
 
-## 6. Eclipse에서 개발
+## 5단계: Eclipse에서 개발
 {: #developing_in_eclipse}
 
 IBM® Eclipse Tools for {{site.data.keyword.Bluemix}}는 기존 Eclipse 환경에 설치할 수 있는 플러그인을 제공하며, 이를 통해 개발자의 IDE(Integrated Development Environment)를 {{site.data.keyword.Bluemix_notm}}와 통합할 수 있습니다.
@@ -158,7 +160,7 @@ Tomcat 서버 정의 작성:
 Apache 서버에서 로컬로 애플리케이션 실행:
   - `GetStartedTomcat` 샘플을 마우스 오른쪽 단추로 클릭하고 `실행 도구` -> `서버에서 실행` 옵션을 선택하십시오.
   - 로컬 호스트 Tomcat 서버를 찾아 선택하고 완료를 클릭하십시오.
-  - 몇 초 후에 애플리케이션이 http://localhost:8080/TomcatHelloWorldApp/에서 실행됩니다.
+  - 몇 초 후에 애플리케이션이 http://localhost:8080/GetStartedTomcat/에서 실행됩니다.
 
 {{site.data.keyword.Bluemix_notm}} 서버 정의 작성:
   - `서버` 보기에서 마우스 오른쪽 단추 클릭 -> `새로 작성` -> `서버`를 선택하십시오.
@@ -174,7 +176,7 @@ Apache 서버에서 로컬로 애플리케이션 실행:
 
 이제 로컬 및 클라우드에서 코드를 실행하게 되었습니다.
 
-## 7. 데이터베이스 추가
+## 6단계: 데이터베이스 추가
 {: #add_database}
 
 다음으로, 이 애플리케이션에 NoSQL 데이터베이스를 추가하고 애플리케이션을 설정하여 로컬 및 Bluemix에서 이를 실행할 수 있도록 합니다.
@@ -187,7 +189,7 @@ Apache 서버에서 로컬로 애플리케이션 실행:
 환경 변수를 사용하면 배치 설정을 소스 코드와 구분할 수 있습니다. 예를 들어, 데이터베이스 비밀번호를 하드 코딩하는 대신 소스 코드에서 참조하는 환경 변수에 이 비밀번호를 저장할 수 있습니다. [자세히 보기...](/docs/manageapps/depapps.html#app_env)
 {: tip}
 
-## 8. 데이터베이스 사용
+## 7단계: 데이터베이스 사용
 {: #use_database}
 이제 이 데이터베이스를 가리키도록 로컬 코드를 업데이트합니다. 특성 파일에 서비스의 신임 정보를 저장합니다. 이 파일은 애플리케이션이 로컬로 실행 중인 경우에만 사용됩니다. {{site.data.keyword.Bluemix_notm}}에서 실행 중인 경우 신임 정보는 VCAP_SERVICES 환경 변수에서 읽습니다.
 
