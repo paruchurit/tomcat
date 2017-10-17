@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -42,8 +42,8 @@ JBP_CONFIG_OPEN_JDK_JRE 환경 변수를 사용하여 앱에서 사용할 Java �
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-현재 java_buildpack 버전은 기본 Tomcat 버전 8.30.0 및 기본 Java 버전 1.8.0_71을 포함하는 v3.6입니다.
-자세한 정보는 [java-buildpack 릴리스](https://github.com/cloudfoundry/java-buildpack/releases)를 참조하십시오.
+현재 java_buildpack 버전은 기본 Tomcat 버전 8.0.41 및 기본 Java 버전 1.8.0_121을 포함하는 v3.13입니다.
+자세한 정보는 [java-buildpack 릴리스](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13)를 참조하십시오.
 
 ## HTTPS 경로 재지정
 {: #https_redirect}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-04-04"
+lastupdated: "2017-09-06"
 
 ---
 
@@ -15,18 +15,18 @@ lastupdated: "2017-04-04"
 {:download: .download}
 {:app_name: data-hd-keyref="app_name"}
 
-# Erste Schritte mit Tomcat unter Bluemix
+# Lernprogramm 'Einführung'
 {: #getting_started}
 
-* {: download} Herzlichen Glückwunsch! Sie haben die Hello World-Beispielanwendung unter {{site.data.keyword.Bluemix}} bereitgestellt! Befolgen Sie diesen schrittweisen Leitfaden, um zu starten. Oder laden Sie den <a class="xref" href="http://bluemix.net" target="_blank" title="(Beispielcode herunterladen) "><img class="hidden" src="../../images/btn_starter-code.svg" alt="Beispielcode herunterladen" />Beispielcode herunter</a> und beginnen Sie auf eigene Faust.
+* {: download} Herzlichen Glückwunsch! Sie haben die Hello World-Beispielanwendung unter {{site.data.keyword.Bluemix}} bereitgestellt! Befolgen Sie diesen schrittweisen Leitfaden, um zu starten. Oder laden Sie den <a class="xref" href="http://bluemix.net" target="_blank" title="(Beispielcode herunterladen)"><img class="hidden" src="../../images/btn_starter-code.svg" alt="Anwendungscode herunterladen" />Beispielcode herunter</a> und beginnen Sie auf eigene Faust.
 
-Wenn Sie diesem Leitfaden folgen, werden Sie eine Entwicklungsumgebung einrichten, eine App lokal und unter {{site.data.keyword.Bluemix}} bereitstellen und einen {{site.data.keyword.Bluemix}}-Datenbankservice in Ihre App integrieren.
+Wenn Sie dem Tomcat-Lernprogramm zur Einführung folgen, werden Sie eine Entwicklungsumgebung einrichten, eine App lokal und unter {{site.data.keyword.Bluemix}} bereitstellen und einen {{site.data.keyword.Bluemix}}-Datenbankservice in Ihre App integrieren.
 
-## Voraussetzungen
+## Vorbemerkungen
 {: #prereqs}
 
 Sie benötigen Folgendes: 
-* [{{site.data.keyword.Bluemix_notm}} Konto](https://console.ng.bluemix.net/registration/)
+* [{{site.data.keyword.Bluemix_notm}}-Konto](https://console.ng.bluemix.net/registration/)
 * [Cloud Foundry-CLI ![Symbol 'Externer Link'](../../icons/launch-glyph.svg "Symbol 'Externer Link'")](https://github.com/cloudfoundry/cli#downloads){: new_window}
 * [Eclipse IDE for Java EE Developers ![Symbol 'Externer Link'](../../icons/launch-glyph.svg "Symbol 'Externer Link'")](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neon2){: new_window}
 * [Git ![Symbol 'Externer Link'](../../icons/launch-glyph.svg "Symbol 'Externer Link'")](https://git-scm.com/downloads){: new_window}
@@ -34,7 +34,7 @@ Sie benötigen Folgendes:
 * [Apache Tomcat Version 8.0.41 ![Symbol 'Externer Link'](../../icons/launch-glyph.svg "Symbol 'Externer Link'")](https://tomcat.apache.org/download-80.cgi#8.0.41 ){: new_window}
 
 
-## 1. Klonen Sie die Beispielapp.
+## Schritt 1: Klonen Sie die Beispielapp.
 {: #clone}
 
 Jetzt können Sie beginnen, mit der Tomcat-Beispielapp zu arbeiten. Klonen Sie das Repository und wechseln Sie in das Verzeichnis, in dem sich die Beispielapp befindet. 
@@ -50,10 +50,10 @@ cd get-started-tomcat
 
 Lesen Sie die Dateien im Verzeichnis *get-started-tomcat*, um sich mit deren Inhalt vertraut zu machen. 
 
-## 2. Führen Sie die App lokal aus.
+## Schritt 2: Führen Sie die App lokal aus.
 {: #run_locally}
 
-Sie müsen die Abhängigkeiten installieren und wie in der Datei 'pom.xml' definiert eine .war-Datei erstellen, um die App auszuführen. 
+Sie müssen die Abhängigkeiten installieren und wie in der Datei 'pom.xml' definiert eine .war-Datei erstellen, um die App auszuführen. 
 
 Installieren Sie die Abhängigkeiten.
 
@@ -76,7 +76,7 @@ Ihre App finden Sie unter: http://localhost:8080/GetStartedTomcat/
 Verwenden Sie `shutdown.bat|.sh`, um Ihre App zu stoppen. Beachten Sie, dass Sie möglicherweise den Befehlen eine Ausführungsberechtigung erteilen müssen.
 {: tip}
 
-## 3. Bereiten Sie die App für die Bereitstellung unter {{site.data.keyword.Bluemix_notm}} vor.
+## Schritt 3: Bereiten Sie die App für die Bereitstellung unter {{site.data.keyword.Bluemix_notm}} vor.
 {: #prepare}
 
 Für die Bereitstellung unter {{site.data.keyword.Bluemix_notm}} kann es hilfreich sein, die Datei 'manifest.yml' zu installieren. Die Datei 'manifest.yml' enthält Basisinformationen zu Ihrer App wie den Namen, wieviel Speicher für jede Instanz zugeordnet werden soll und die Route. Wir haben eine Beispieldatei 'manifest.yml' im Verzeichnis `get-started-tomcat` bereitgestellt. 
@@ -89,7 +89,7 @@ Für die Bereitstellung unter {{site.data.keyword.Bluemix_notm}} kann es hilfrei
   - name: GetStartedTomcat
     random-route: true
     memory: 256M
-    path: target/TomcatHelloWorldApp.war
+    path: target/GetStartedTomcat.war
     buildpack: java_buildpack
   ```
   {: codeblock}
@@ -97,7 +97,7 @@ Für die Bereitstellung unter {{site.data.keyword.Bluemix_notm}} kann es hilfrei
 In dieser Datei 'manifest.yml' generiert **random-route: true** eine zufällige Route für Ihre App, um zu verhindern, dass Ihre Route mit anderen Routen kollidiert. Wenn Sie möchten, können Sie **random-route: true** durch **host: myChosenHostName** ersetzen und einen Hostnamen Ihrer Wahl angeben. [Weitere Informationen...](/docs/manageapps/depapps.html#appmanifest)
 {: tip}
 
-## 4. Stellen Sie die App bereit.
+## Schritt 4: Stellen Sie die App bereit.
 {: #deploy}
 
 Sie können die Cloud Foundry-CLI verwenden, um Apps bereitzustellen.
@@ -111,12 +111,12 @@ cf api <API-endpoint>
 
 Ersetzen Sie *API-endpoint* im Befehl durch einen API-Endpunkt aus der folgenden Liste: 
 
-|URL                             | Bereich        |
-|:-------------------------------|:---------------|
-| https://api.ng.bluemix.net     | USA (Süden)    |
-| https://api.eu-gb.bluemix.net  | Großbritannien |
-| https://api.au-syd.bluemix.net | Sydney         |
-
+|Bereich         |API-Endpunkt|
+|:---------------|:-------------------------------|
+| USA (Süden)    | https://api.ng.bluemix.net|
+| Großbritannien | https://api.eu-gb.bluemix.net|
+| Sydney| https://api.au-syd.bluemix.net|
+| Frankfurt     | https://api.eu-de.bluemix.net | 
 
 Melden Sie sich bei Ihrem {{site.data.keyword.Bluemix_notm}}-Konto an: 
 
@@ -125,13 +125,15 @@ cf login
 ```
 {: pre}
 
-Übertragen Sie Ihre App mit einer Push-Operation aus dem Verzeichnis *get-started-tomcat* zu {{site.data.keyword.Bluemix_notm}}
+Wenn Sie sich nicht über den Befehl `cf login` oder `bx login` anmelden können, weil Sie über eine eingebundene Benutzer-ID verfügen, verwenden Sie entweder den Befehl `cf login --sso` oder den Befehl `bx login --sso`, um sich mit Ihrer Single-Sign-on-ID anzumelden. Weitere Informationen finden Sie unter [Mit eingebundener ID anmelden](https://console.bluemix.net/docs/cli/login_federated_id.html#federated_id).
+
+Übertragen Sie Ihre App aus dem Verzeichnis *get-started-tomcat* mit einer Push-Operation an {{site.data.keyword.Bluemix_notm}}.
 ```
 cf push
 ```
 {: pre}
 
-Dieser Vorgang kann ungefähr zwei Minuten dauern. Falls ein Fehler im Bereitstellungsprozess auftritt, können Sie den Befehl `cf logs <Your-App-Name> --recent` verwenden, um den Fehler zu beheben.
+Dieser Vorgang kann ungefähr zwei Minuten dauern. Falls ein Fehler im Bereitstellungsprozess auftritt, können Sie mithilfe des Befehls `cf logs <Your-App-Name> --recent` nach dem Fehler suchen.
 
 Wenn die Bereitstellung abgeschlossen ist, sollten Sie eine Nachricht sehen, die anzeigt, dass Ihre App ausgeführt wird. Ihre App wird an der URL angezeigt, die in der Ausgabe der Push-Operation aufgelistet ist. Sie können auch den Befehl 
   ```
@@ -140,7 +142,7 @@ cf apps
   {: pre}
   ausgeben, um Ihren Appstatus und die URL anzuzeigen.
 
-## 6. In Eclipse entwickeln
+## Schritt 5: Entwickeln Sie in Eclipse.
 {: #developing_in_eclipse}
 
 IBM® Eclipse Tools für {{site.data.keyword.Bluemix}} bieten Plug-ins, die in einer vorhandenen Eclipse-Umgebung installiert werden können, um die Integration der IDE (Integrated Development Environment) der Anwendungsentwickler in {{site.data.keyword.Bluemix_notm}} zu unterstützen.
@@ -158,7 +160,7 @@ Erstellen Sie eine Tomcat-Serverdefinition:
 Führen Sie Ihre Anwendung lokal auf dem Apache-Server aus:
   - Klicken Sie mit der rechten Maustaste auf das Beispiel `GetStartedTomcat` und wählen Sie die Optionen `Ausführen als` -> `Auf Server ausführen` aus. 
   - Suchen Sie den Tomcat-Server als lokalen Host, wählen Sie ihn aus und klicken Sie auf die Option zum Fertigstellen.
-  - In wenigen Sekunden sollte Ihre Anwendung unter folgender Adresse betriebsbereit sein: http://localhost:8080/TomcatHelloWorldApp/
+  - In wenigen Sekunden wird Ihre Anwendung unter folgender Adresse ausgeführt: http://localhost:8080/GetStartedTomcat/.
 
 Erstellen Sie eine {{site.data.keyword.Bluemix_notm}}-Serverdefinition:
   - Klicken Sie in der Ansicht `Server` mit der rechten Maustaste auf -> `Neu` -> `Server`.
@@ -174,20 +176,20 @@ Führen Sie Ihre Anwendung unter {{site.data.keyword.Bluemix_notm}} aus:
 
 Jetzt haben Sie Ihren Code lokal und in der Cloud ausgeführt!
 
-## 7. Fügen Sie eine Datenbank hinzu. 
+## Schritt 6: Fügen Sie eine Datenbank hinzu.
 {: #add_database}
 
 Als nächstes werden wir eine NoSQL-Datenbank zu dieser Anwendung hinzufügen und die Anwendung so einrichten, dass sie lokal und unter Bluemix ausgeführt werden kann. 
 
 1. Melden Sie sich in Ihrem Browser bei {{site.data.keyword.Bluemix_notm}} an. Navigieren Sie zum `Dashboard`. Wählen Sie Ihre Anwendung durch Klicken auf den zugehörigen Namen in der Spalte `Name` aus. 
 2. Klicken Sie auf `Verbindungen` und dann auf `Neuen verbinden`.
-2. Wählen Sie im Abschnitt `Data & Analytics` den Eintrag `Cloudant NoSQL DB` aus und erstellen Sie den Service mithilfe von `Erstellen`. 
+2. Wählen Sie im Abschnitt `Data &  Analytics` den Eintrag `Cloudant NoSQL DB` aus und erstellen Sie den Service mithilfe von `Erstellen`. 
 3. Wählen Sie `Erneutes Staging` aus, wenn Sie dazu aufgefordert werden. {{site.data.keyword.Bluemix_notm}} startet Ihre Anwendung erneut und bietet die Datenbankberechtigungsnachweise für Ihre Anwendung unter Verwendung der Umgebungsvariablen `VCAP_SERVICES`. Diese Umgebungsvariable ist nur dann für die Anwendung verfügbar, wenn sie unter {{site.data.keyword.Bluemix_notm}} ausgeführt wird.
 
 Umgebungsvariablen ermöglichen es Ihnen, die Bereitstellungseinstellungen von Ihrem Quellcode zu trennen. Anstelle der festen Codierung eines Datenbankkennworts können Sie dieses in einer Umgebungsvariablen speichern, auf die Sie in Ihrem Quellcode verweisen. [Weitere Informationen...](/docs/manageapps/depapps.html#app_env)
 {: tip}
 
-## 8. Verwenden Sie die Datenbank.
+## Schritt 7: Verwenden Sie die Datenbank.
 {: #use_database}
 Wir werden jetzt Ihren lokalen Code aktualisieren, um auf diese Datenbank zu verweisen. Wir werden die Berechtigungsnachweise für die Services in einer Eigenschaftendatei speichern. Diese Datei wird NUR dann verwendet, wenn die Anwendung lokal ausgeführt wird. Bei der Ausführung in {{site.data.keyword.Bluemix_notm}} werden die Berechtigungsnachweise aus der Umgebungsvariablen VCAP_SERVICES gelesen. 
 

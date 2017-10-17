@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -40,13 +40,12 @@ lastupdated: "2017-03-23"
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-最新的 java_buildpack 版本為 3.6 版，其中包含預設的 Tomcat 8.30.0 版和預設的 Java 1.8.0_71 版。如需相關資訊，請參閱 [java-buildpack 版本](https://github.com/cloudfoundry/java-buildpack/releases)。
+最新的 java_buildpack 版本為 3.13 版，其中包含預設的 Tomcat 8.0.41 版和預設的 Java 1.8.0_121 版。如需相關資訊，請參閱 [java-buildpack 版本](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13)。
 
 ## HTTPS 重新導向
 {: #https_redirect}
 
-Tomcat 運行環境可以配置成信任 Bluemix 內部 Proxy，並容許將 HTTP 資料流量重新導向至 HTTPS (SSL)。
-若要這樣做，請設定 RemoteIpValve Valve 元素與 internalProxies 及 protocolHeader 選項來修改 server.xml 檔案。
+Tomcat 運行環境可以配置成信任 Bluemix 內部 Proxy，並容許將 HTTP 資料流量重新導向至 HTTPS (SSL)。若要這樣做，請設定 RemoteIpValve Valve 元素與 internalProxies 及 protocolHeader 選項來修改 server.xml 檔案。
 
 建置套件中所含的 Tomcat 運行環境 [server.xml](https://github.com/cloudfoundry/java-buildpack/blob/master/resources/tomcat/conf/server.xml)，預設只會設定 RemoteIpValve Valve 元素的 protocolHeader。若要在 Bluemix 中將 HTTP 資料流量重新導向至 HTTPS，請在自訂 server.xml 中配置 RemoteIpValve 元素，如下所示：
 

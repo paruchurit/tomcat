@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -42,7 +42,7 @@ env:
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-当前的 java_buildpack 版本为 V3.6，其中包含缺省 Tomcat V8.30.0 和缺省 Java V1.8.0_71。有关更多信息，请参阅 [java-buildpack 发行版](https://github.com/cloudfoundry/java-buildpack/releases)。
+当前的 java_buildpack 版本为 V3.13，其中包含缺省 Tomcat V8.0.41 和缺省 Java V1.8.0_121。有关更多信息，请参阅 [java-buildpack 发行版](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13)。
 
 ## HTTPS 重定向
 {: #https_redirect}

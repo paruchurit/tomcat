@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-03-23"
+lastupdated: "2017-06-20"
 
 ---
 
@@ -41,7 +41,7 @@ Tomcat ランタイムについて詳しくは、[java-buildpack のreadme](http
         JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 1.7.0_+ }}'
 ```
 {: codeblock}
-現在の java_buildpack バージョンは v3.6 です。これには、デフォルトの Tomcat バージョン 8.30.0 とデフォルトの Java バージョン 1.8.0_71 が含まれています。詳しくは、[java-buildpack のリリース](https://github.com/cloudfoundry/java-buildpack/releases) を参照してください。
+現在の java_buildpack バージョンは v3.13 です。これには、デフォルトの Tomcat バージョン 8.0.41 とデフォルトの Java バージョン 1.8.0_121 が含まれています。詳しくは、[java-buildpack のリリース](https://github.com/cloudfoundry/java-buildpack/releases/tag/v3.13) を参照してください。
 
 ## HTTPS リダイレクト
 {: #https_redirect}
