@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2017-10-11"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-09-06"
 
 * {: download} Congratulations, you deployed a Hello World sample application on {{site.data.keyword.Bluemix}}!  To get started, follow this step-by-step guide. Or, <a class="xref" href="http://bluemix.net" target="_blank" title="(Download sample code)"><img class="hidden" src="../../images/btn_starter-code.svg" alt="Download application code" />download the sample code</a> and explore on your own.
 
-By following the Tomcat getting started tutorial, you'll set up a development environment, deploy an app locally and on {{site.data.keyword.Bluemix}}, and integrate a {{site.data.keyword.Bluemix}} database service in your app.
+By following the Tomcat getting started tutorial, you'll set up a development environment, deploy an app locally and on {{site.data.keyword.Bluemix_notm}}, and integrate a {{site.data.keyword.Bluemix_notm}} database service in your app.
 
 ## Before you begin
 {: #prereqs}
@@ -69,7 +69,7 @@ Run the app.
 ```
 <tomcat-install-dir>/bin/startup.bat|.sh
 ```
-{: screen}
+{: pre}
 
 View your app at: http://localhost:8080/GetStartedTomcat/
 
@@ -116,7 +116,7 @@ Replace the *API-endpoint* in the command with an API endpoint from the followin
 | US South       |https://api.ng.bluemix.net     |
 | United Kingdom | https://api.eu-gb.bluemix.net  |
 | Sydney         | https://api.au-syd.bluemix.net |
-| Frankfurt     | https://api.eu-de.bluemix.net | 
+| Frankfurt     | https://api.eu-de.bluemix.net |
 
 Login to your {{site.data.keyword.Bluemix_notm}} account:
 
@@ -145,9 +145,9 @@ cf apps
 ## Step 5: Develop in Eclipse
 {: #developing_in_eclipse}
 
-IBM® Eclipse Tools for {{site.data.keyword.Bluemix}} provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with {{site.data.keyword.Bluemix_notm}}.
+{{site.data.keyword.eclipsetoolsfull}} provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with {{site.data.keyword.Bluemix_notm}}.
 
-Download and install  [IBM Eclipse Tools for Bluemix](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
+Download and install  [IBM Eclipse Tools](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
 
 Import this sample into Eclipse using `File` -> `Import` -> `Maven` -> `Existing Maven Projects` option.
 
@@ -164,13 +164,13 @@ Run your application locally on the Apache server:
 
 Create a {{site.data.keyword.Bluemix_notm}} server definition:
   - In the `Servers` view, right-click -> `New` -> `Server`.
-  - Select `IBM` -> `IBM Bluemix` and follow the steps in the wizard.
+  - Select `{{site.data.keyword.IBM_notm}}` -> `{{site.data.keyword.IBM_notm}} {{site.data.keyword.Bluemix_notm}}` and follow the steps in the wizard.
   - Enter your credentials and click `Next`
   - Select your `org` and `space` and click `Finish`
 
 Run your application on {{site.data.keyword.Bluemix_notm}}:
   - Right click on the `GetStartedTomcat` sample and select `Run As` -> `Run on Server` option.
-  - Find and select the `IBM Bluemix` and press Finish.
+  - Find and select the `{{site.data.keyword.IBM_notm}} {{site.data.keyword.Bluemix_notm}}` and press Finish.
   - A wizard will guide you with the deployment options. Be sure to choose a unique `Name` for your application.
   - In a few minutes, your application should be running at the URL you chose.
 
@@ -179,11 +179,11 @@ Now you have run your code locally and on the cloud!
 ## Step 6: Add a database
 {: #add_database}
 
-Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on Bluemix.
+Next, we'll add a {{site.data.keyword.cloudantfull}} database to this application and set up the application so that it can run locally and on {{site.data.keyword.Bluemix_notm}}.
 
 1. Log in to {{site.data.keyword.Bluemix_notm}} in your Browser. Browse to the `Dashboard`. Select your application by clicking on its name in the `Name` column.
 2. Click on `Connections` then `Connect new`.
-2. In the `Data & Analytics` section, select `Cloudant NoSQL DB` and `Create` the service.
+2. In the `Data & Analytics` section, select `{{site.data.keyword.cloudant_short_notm}}` and `Create` the service.
 3. Select `Restage` when prompted. {{site.data.keyword.Bluemix_notm}} will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is only available to the application when it is running on {{site.data.keyword.Bluemix_notm}}.
 
 Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code. [Learn more...](/docs/manageapps/depapps.html#app_env)

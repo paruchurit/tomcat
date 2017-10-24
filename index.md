@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-06-20"
+lastupdated: "2017-10-09"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-06-20"
 The Tomcat runtime on {{site.data.keyword.Bluemix}} is powered by the java_buildpack.
 {: shortdesc}
 
-To use the Tomcat runtime on {{site.data.keyword.Bluemix}}, you must specify the java_buildpack with the -b option. For example:
+To use the Tomcat runtime on {{site.data.keyword.Bluemix_notm}}, you must specify the java_buildpack with the -b option. For example:
 <pre>
     cf push &lt;myApp&gt; -p &lt;pathToMyApp&gt; -b java_buildpack
 </pre>
@@ -28,7 +28,7 @@ For more information about the Tomcat runtime, see the
 ## Starter application
 {: #starter_application}
 
-{{site.data.keyword.Bluemix}} provides a Tomcat starter application.  The Tomcat starter application is a simple Tomcat app that provides a template that you can use. You can experiment with the starter app, and make and push changes to the Bluemix environment. See [Using the starter applications](/docs/cfapps/starter_app_usage.html) for help with using the starter application.
+{{site.data.keyword.Bluemix_notm}} provides a Tomcat starter application.  The Tomcat starter application is a simple Tomcat app that provides a template that you can use. You can experiment with the starter app, and make and push changes to the {{site.data.keyword.Bluemix_notm}} environment. See [Using the starter applications](/docs/cfapps/starter_app_usage.html) for help with using the starter application.
 
 ## Runtime versions
 {: #runtime_versions}
@@ -48,10 +48,10 @@ For more information please see [java-buildpack releases](https://github.com/clo
 ## HTTPS redirect
 {: #https_redirect}
 
-The Tomcat runtime can be configured to trust Bluemix internal proxies and allow the redirect of HTTP traffic to HTTPS (SSL).
+The Tomcat runtime can be configured to trust {{site.data.keyword.Bluemix_notm}} internal proxies and allow the redirect of HTTP traffic to HTTPS (SSL).
 To do so modify the server.xml file, setting the RemoteIpValve Valve element with internalProxies and protocolHeader options.
 
-The Tomcat runtime [server.xml](https://github.com/cloudfoundry/java-buildpack/blob/master/resources/tomcat/conf/server.xml) included in the buildpack only sets the protocolHeader of the RemoteIpValve Valve element by default.  To redirect HTTP traffic to HTTPS in Bluemix configure the RemoteIpValve element in your custom server.xml as follows:
+The Tomcat runtime [server.xml](https://github.com/cloudfoundry/java-buildpack/blob/master/resources/tomcat/conf/server.xml) included in the buildpack only sets the protocolHeader of the RemoteIpValve Valve element by default.  To redirect HTTP traffic to HTTPS in {{site.data.keyword.Bluemix_notm}} configure the RemoteIpValve element in your custom server.xml as follows:
 
 ```
  <Valve className='org.apache.catalina.valves.RemoteIpValve' protocolHeader='x-forwarded-proto' internalProxies='.*' />
