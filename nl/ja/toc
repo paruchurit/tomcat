@@ -21,6 +21,6 @@ Tomcat
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    [ランタイム・バージョン](index.html/#runtime_versions)
+    [ランタイム・バージョン](index.html#runtime_versions)
     [ビルドパックのサポート・ステートメント](../../manageapps/buildpackSupport.html)
     {: .navgroup-end}

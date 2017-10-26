@@ -21,6 +21,6 @@ Tomcat
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    [Versiones de tiempo de ejecución](index.html/#runtime_versions)
+    [Versiones de tiempo de ejecución](index.html#runtime_versions)
     [Declaración de soporte de paquete de compilación](../../manageapps/buildpackSupport.html)
     {: .navgroup-end}
