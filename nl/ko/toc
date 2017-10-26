@@ -21,6 +21,6 @@ Tomcat
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    [런타임 버전](index.html/#runtime_versions)
+    [런타임 버전](index.html#runtime_versions)
     [빌드팩 지원 설명](../../manageapps/buildpackSupport.html)
     {: .navgroup-end}

@@ -21,6 +21,6 @@ Tomcat
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    [運行環境版本](index.html/#runtime_versions)
+    [運行環境版本](index.html#runtime_versions)
     [建置套件支援聲明](../../manageapps/buildpackSupport.html)
     {: .navgroup-end}
