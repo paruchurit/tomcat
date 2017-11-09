@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-10-25"
 
 * {: download} Congratulations, you deployed a Hello World sample application on {{site.data.keyword.Bluemix}}!  To get started, follow this step-by-step guide. Or, <a class="xref" href="http://bluemix.net" target="_blank" title="(Download sample code)"><img class="hidden" src="../../images/btn_starter-code.svg" alt="Download application code" />download the sample code</a> and explore on your own.
 
-By following the Tomcat getting started tutorial, you'll set up a development environment, deploy an app locally and on {{site.data.keyword.Bluemix}}, and integrate a {{site.data.keyword.Bluemix_notm}} database service in your app.
+By following the Tomcat getting started tutorial, you'll set up a development environment, deploy an app locally and on {{site.data.keyword.Bluemix}}, and integrate a database service in your app.
 
 ## Before you begin
 {: #prereqs}
@@ -142,75 +142,39 @@ cf apps
   {: pre}
   command to view your apps status and see the URL.
 
-## Step 5: Develop in Eclipse
-{: #developing_in_eclipse}
-
-{{site.data.keyword.eclipsetoolsfull}} provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with {{site.data.keyword.Bluemix_notm}}.
-
-Download and install  [IBM Eclipse Tools](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
-
-Import this sample into Eclipse using `File` -> `Import` -> `Maven` -> `Existing Maven Projects` option.
-
-Create a Tomcat server definition:
-  - In the `Servers` view right-click -> `New` -> `Server`.
-  - Select `Apache` -> `Tomcat v8.0 Server`.
-  - Choose your `tomcat-install-dir`.
-  - Continue the wizard with default options to Finish.
-
-Run your application locally on the Apache server:
-  - Right click on the `GetStartedTomcat` sample and select `Run As` -> `Run on Server` option.
-  - Find and select the localhost Tomcat server and press Finish.
-  - In a few seconds, your application should be running at http://localhost:8080/GetStartedTomcat/
-
-Create a {{site.data.keyword.Bluemix_notm}} server definition:
-  - In the `Servers` view, right-click -> `New` -> `Server`.
-  - Select `{{site.data.keyword.IBM_notm}}` -> `{{site.data.keyword.IBM_notm}} {{site.data.keyword.Bluemix_notm}}` and follow the steps in the wizard.
-  - Enter your credentials and click `Next`
-  - Select your `org` and `space` and click `Finish`
-
-Run your application on {{site.data.keyword.Bluemix_notm}}:
-  - Right click on the `GetStartedTomcat` sample and select `Run As` -> `Run on Server` option.
-  - Find and select the `{{site.data.keyword.IBM_notm}} {{site.data.keyword.Bluemix_notm}}` and press Finish.
-  - A wizard will guide you with the deployment options. Be sure to choose a unique `Name` for your application.
-  - In a few minutes, your application should be running at the URL you chose.
-
-Now you have run your code locally and on the cloud!
-
-## Step 6: Add a database
+## Step 5: Add a database
 {: #add_database}
 
-Next, we'll add a {{site.data.keyword.cloudantfull}} database to this application and set up the application so that it can run locally and on {{site.data.keyword.Bluemix_notm}}.
+Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on {{site.data.keyword.Bluemix_notm}}.
 
-1. Log in to {{site.data.keyword.Bluemix_notm}} in your Browser. Browse to the `Dashboard`. Select your application by clicking on its name in the `Name` column.
-2. Click on `Connections` then `Connect new`.
-2. In the `Data & Analytics` section, select `{{site.data.keyword.cloudant_short_notm}}` and `Create` the service.
-3. Select `Restage` when prompted. {{site.data.keyword.Bluemix_notm}} will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is only available to the application when it is running on {{site.data.keyword.Bluemix_notm}}.
+1. In your browser, log in to {{site.data.keyword.Bluemix_notm}} and go to the Dashboard. Select your application by clicking on its name in the **Name** column.
+2. Click on **Connections** and then **Connect new**.
+3. In the **Data & Analytics** section, select **Cloudant NoSQL DB** and then create the service.
+4. Go to **Apps > Your App > Connections** and then choose **Connect Existing**.
+5. Select **Restage** when prompted. {{site.data.keyword.Bluemix_notm}} will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is available to the application only when it is running on {{site.data.keyword.Bluemix_notm}}.
 
 Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code. [Learn more...](/docs/manageapps/depapps.html#app_env)
 {: tip}
 
-## Step 7: Use the database
+## Step 6: Use the database
 {: #use_database}
-We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in {{site.data.keyword.Bluemix_notm}}, the credentials will be read from the VCAP_SERVICES environment variable.
 
-1. Open Eclipse and open the file src/main/resources/cloudant.properties:
-  ```
-  cloudant_url=
-  ```
-  {: pre}
+We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in {{site.data.keyword.Bluemix_notm}}, the credentials will be read from the `VCAP_SERVICES` environment variable.
 
-2. In your browser open the {{site.data.keyword.Bluemix_notm}} UI, select your App -> Connections -> Cloudant -> View Credentials
+1. In your browser, go to {{site.data.keyword.Bluemix_notm}} and select **Apps > _your app_ > Connections > Cloudant > View Credentials**.
 
-3. Copy and paste just the `url` from the credentials to the `url` field of the `cloudant.properties` file and save the changes.  The result will be something like:
+2. Copy and paste just the `url` from the credentials to the `url` field of the `cloudant.properties` file, and save the changes.
   ```
   cloudant_url=https://123456789 ... bluemix.cloudant.com
   ```
+  {:pre}
 
-4. Restart Tomcat server in Eclipse from the `Servers` view.
+3. Restart the server
 
-  Refresh your browser view at: http://localhost:8080/GetStartedTomcat/. Any names you enter into the app will now get added to the database.
+Refresh your browser view at: http://localhost:8080/GetStartedTomcat/. Any names you enter into the app will now get added to the database.
 
-  Your local app and the {{site.data.keyword.Bluemix_notm}} app are sharing the database.  View your {{site.data.keyword.Bluemix_notm}} app at the URL listed in the output of the push command from above.  Names you add from either app should appear in both when you refresh the browsers.
+  Your local app and the {{site.data.keyword.Bluemix_notm}} app are sharing the database. Names you add from either app will appear in both when you refresh the browsers.
 
-Remember if you don't need your app live on {{site.data.keyword.Bluemix_notm}}, stop it so you don't incur any unexpected charges.
+
+Remember, if you don't need your app live on {{site.data.keyword.Bluemix_notm}}, stop the app so you don't incur any unexpected charges.
 {: tip}  
