@@ -14,7 +14,7 @@ lastupdated: "2017-10-25"
 # Tomcat
 {: #tomcat_runtime}
 
-The Tomcat runtime on {{site.data.keyword.Bluemix}} is powered by the java_buildpack.
+The Tomcat runtime on PAAS Environment Management Team {{site.data.keyword.Bluemix}} is powered by the java_buildpack.
 {: shortdesc}
 
 To use the Tomcat runtime on {{site.data.keyword.Bluemix_notm}}, you must specify the java_buildpack with the -b option. For example:
